@@ -10,7 +10,7 @@ if ($action=="")    /* display the contact form */
     <input name="name" type="text" value="" size="30"/><br> 
     Your email:<br> 
     <input name="email" type="text" value="" size="30"/><br> 
-    Please list the students, using a LAST NAME, FIRST NAME format. Create a new line for each student:<br> 
+    Please list the students, using a LAST NAME, FIRST NAME format, separated by a comma. Create a new line for each student:<br> 
     <textarea name="message" rows="7" cols="30"></textarea><br> 
     <input type="submit" value="Send email"/> 
     </form> 
@@ -22,9 +22,9 @@ else                /* send the submitted data */
     $email=$_REQUEST['email']; 
     $students=$_REQUEST['message'];
 	$servername = "localhost";
-	$username = "username";
-	$password = "password";
-	$dbname = "myDB";
+	$username = "jeehtove_flist";
+	$password = "VMf+TogMzf{X";
+	$dbname = "jeehtove_flist";
 
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
@@ -53,6 +53,14 @@ else                /* send the submitted data */
 					$last = $fl_array[0];
 					$first = $fl_array[1];
 					echo "The Last name is " . $last . " and the first is " . $first . ".";
+					$sql = "INSERT INTO flist (last, first, teacher, email)
+					VALUES ('".$last."','".$first."','".$name."','".$email."')";
+
+					if ($conn->query($sql) === TRUE) {
+					    echo count($students_array) . " records created successfully. Thank you!<br>Please contact Jason Banks at jason.banks@provindex.com with any questions.";
+					} else {
+					    echo "Error: " . $sql . "<br>" . $conn->error;
+					}
 				}
 			}
         } 
