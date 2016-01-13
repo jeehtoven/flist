@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 11, 2016 at 10:26 AM
+-- Generation Time: Jan 13, 2016 at 11:41 AM
 -- Server version: 5.5.42-37.1-log
 -- PHP Version: 5.4.23
 
@@ -22,8 +22,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `flist`;
 CREATE TABLE IF NOT EXISTS `flist` (
-  `last` varchar(255) NOT NULL,
   `first` varchar(255) NOT NULL,
-  `teacher` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL
+  `last` varchar(255) NOT NULL,
+  `teacher` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
