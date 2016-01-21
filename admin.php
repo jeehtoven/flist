@@ -1,9 +1,13 @@
 <html>
+<head>
 <title>Welcome to Flist!</title>
 <center><img src="flistlogo.png"></center>
-	<br>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<br>
 <?php
-if($_POST["password"] == "karla")
+if($_POST["password"] == "karla71")
 {
 	$servername = "localhost";
 	$username = "jeehtove_flist";
@@ -34,7 +38,7 @@ if($_POST["password"] == "karla")
 	echo "<br>";
 	
 	$sql_dup = "SELECT COUNT(last), last, first FROM flist GROUP BY last HAVING (COUNT(last)>1)";
-	$sql_csv = "SELECT first, last, teacher FROM flist GROUP BY last";
+	$sql_csv = "SELECT first, last, teacher FROM flist ORDER BY last ASC";
 	$result_dup = $conn->query($sql_dup);
 	$result_csv = $conn->query($sql_csv);
 	$file = "flist.csv";
@@ -65,11 +69,7 @@ if($_POST["password"] == "karla")
 		}
 	}
 	
-	else {
-		echo "There are no names to output.";
-	}
-	
-	echo "<br><br><center><a href='".$file."'><img src='csv.jpg' alt='Export to CSV file.' style='width:150px;height:150px'></a>";
+	echo "<br><br><center><a href='".$file."'><img src='csv.jpg' alt='Export to CSV file.' style='width:150px;height:150px'></a>&nbsp&nbsp<a href='truncate.php'><img src='truncate.png' style='width:150px;height:150px'></a><br>Download to CSV&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTruncate F List";
 	fclose($fp);
 	
 	$conn->close();

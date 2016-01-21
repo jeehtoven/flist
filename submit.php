@@ -1,6 +1,11 @@
 <html>
+<head>
 <title>Welcome to Flist!</title>
-<center><img src="flistlogo.png">
+<center><img src="flistlogo.png"></center>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<br>
 <?php
 		// this is a new visitor who has submitted the form
 			$name=$_REQUEST['name'];  
@@ -32,6 +37,8 @@
 						{
 							$first = $fl_array[0];
 							$last = $fl_array[1];
+							$first = trim($first);
+							$last = trim($last);
 							//echo "The Last name is " . $last . " and the first is " . $first . ".<br>";
 							$sql = "INSERT INTO flist (first, last, teacher)
 							VALUES ('".$first."','".$last."','".$name."')";
@@ -51,7 +58,7 @@
 		        }
 		
 		//header("Location: index.php");
-		echo "<center>" . count($students_array) . " records created successfully. Thank you!<br>Please contact Karla Carmichael at Carmichael.Karla@pps-nj.us with any questions.<br><br>You are now being redirected to the home page...</center>";
+		echo "<center>" . count($students_array) . " records created successfully. Thank you!<br>Please contact Karla Carmichael at Carmichael.Karla@pps-nj.us with any questions.<br><br>You are now being redirected to the home page. Please do not press the refresh button again.</center>";
 		echo "<script>setTimeout(\"location.href = 'index.php';\",3000);</script>";
 ?>
 </center>
